@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.my.service.*;
 
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +25,9 @@ public class LoginController extends HttpServlet {
 		if(id.equals(pwd)) {
 			out.print("{\"status\":1}");
 		} else {
-			out.print("{\"status\":-1}");
+			out.print("{\"status\":-1}");	
 		}
+		CustomerService service = new CustomerService();
+		
 	}
 }

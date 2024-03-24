@@ -8,7 +8,9 @@ import com.my.exception.FindException;
 import com.my.vo.Product;
 
 public class ProductService {
+	
 	private ProductDAO dao;
+	
 	public ProductService() {
 		dao = new ProductDAOOracle();
 	}

@@ -23,7 +23,7 @@
 				var pwdValue = $("input[name=pwd]").val();
 				
 				$.ajax({ 	
-                	url: "./login",
+                	url: "./login", // web.xml 서블릿 맵핑을 통해 ./login으로 LoginController.java 호출가능
                 	method: "post",
                 	data: {"id": idValue, "pwd": pwdValue},
                 	success: function(responseObj){

@@ -62,7 +62,7 @@ public class ProductDAOOracle implements ProductDAO {
 			throw new FindException(e.getMessage());
 		}
 		
-		String selectAllSQL = "SELECT * FROM product ORDER BY prod_name ASC";
+		String selectAllSQL = "SELECT * FROM product ORDER BY prod_no ASC";
 		List<Product> all = new ArrayList<Product>();
 		try {
 			pstmt = con.prepareStatement(selectAllSQL);
