@@ -1,0 +1,155 @@
+package jdbc;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCTest {
+	
+	public static void insert() {	
+		// DB와 연결
+		java.sql.Connection con = null;
+		
+		// SQL 송신
+		java.sql.Statement stmt = null;
+		
+		String insertSQL = "INSERT INTO customer(id, pwd, name) VALUES ('jones', '1234', '존스')";
+		
+		
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "scott";
+		String password ="tiger";
+		
+		try {
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("DB와의 연결 성공");
+			
+			stmt = con.createStatement();
+			int rowcnt = stmt.executeUpdate(insertSQL);
+			System.out.println("SQL구문 송신 성공: 처리건수=" + rowcnt);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return;
+		} finally {
+			System.out.println("DB와의 연결 해제");
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public static void selectAll() {
+		Connection con = null; // DB연결
+		Statement stmt = null; // SQL 구문송신
+		ResultSet rs = null; // selectSQL 구문의 수신
+		
+		String selectSQL = "SELECT * from customer";
+		
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "scott";
+		String password ="tiger";
+		try {
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("DB와의 연결 성공");
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(selectSQL);
+			// System.out.println(rs);
+			while(rs.next()) {
+				String id = rs.getString("id");
+				String pwd = rs.getString("pwd");
+				String name = rs.getString("name");
+				String zipcode = rs.getString(4);
+				String addr1 = rs.getString(5);
+				System.out.println(id + pwd + name + zipcode + addr1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return;
+		} finally {
+			System.out.println("DB와의 연결 해제");
+			if(con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		// JDBC 드라이버 로드
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("JDBC드라이버 로드 성공");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		// insert();
+		// selectAll();
+		Connection con = null; // DB연결
+		Statement stmt = null; // SQL 구문송신
+		ResultSet rs = null; // selectSQL 구문의 수신
+		
+		String keyboardId = "SW"; // 키보드로부터 입력된 아이디값
+		
+		String selectByIdSQL = "select * from customer where id = 'SW'";
+		
+		// id가 'SW'인 고객의 아이디, 이름, 비번, 우편번호, 주소 출력하기
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "scott";
+		String password ="tiger";
+		try {
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("DB와의 연결 성공");
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(selectByIdSQL);
+			// System.out.println(rs);
+			if(rs.next()) { // id='SW'에 해당하는 고객이 존재하는 경우
+				String id = rs.getString(1);
+				String pwd = rs.getString("pwd");
+				String name = rs.getString("name");
+				String zipcode = rs.getString(4);
+				String addr1 = rs.getString(5);
+				System.out.println(id + pwd + name + zipcode + addr1);
+			} else {
+				System.out.println("ID에 해당고객이 없습니다.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return;
+		} finally {
+			System.out.println("DB와의 연결 해제");
+			if(con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+
+	}
+
+}

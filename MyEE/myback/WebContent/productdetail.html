@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.producdetail {
+            box-sizing: border-box;
+            width: 100%;
+            height: 300px;
+        }
+        div.productdetail > div.productdetail_img {
+            width: 35%;
+            float: left; 
+        }
+        div.productdetail>div.productdetail_info {
+            width: 76%;
+            float: right;
+        }
+        div.productdetail>div.productdetail_info>form>ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="productdetail">
+        <div class="productdetail_img">
+            <img src="images/americano.jpg" alt="">
+        </div>
+        <div class="productdetail_info">
+            <h1>아메리카노</h1>
+            <hr>
+            <form action="">
+                <input type="hidden" name="prod_no" value="C0001">
+                <ul>
+                    <li>강렬한 에스프레소샷에 뜨거운 물의 조화</li>
+                    <li>가격 : 1,000</li>
+                    <li>수량: <input name="quantity" type="number" min="1" max="10"></li>
+                    <li><input type="submit" value="장바구니 넣기"></li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

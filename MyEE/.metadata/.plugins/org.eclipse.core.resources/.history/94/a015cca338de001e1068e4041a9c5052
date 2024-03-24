@@ -1,0 +1,16 @@
+package jdbc;
+
+public class JDBCTest {
+
+	public static void main(String[] args) {
+		// JDBC 드라이버 로드
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

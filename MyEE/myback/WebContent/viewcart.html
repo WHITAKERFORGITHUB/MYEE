@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.viewcart {
+            box-sizing: border-box;
+            width: 100%;
+            height: 300px;
+        }
+        div.viewcart > table {
+            width: 50%;
+            border-collapse: collapse;
+            /* border: 1px solid; */
+        }
+        div.viewcart > table, div.viewcart > table td, div.viewcart > table th {
+            border: 1px solid;
+        }
+        div.viewcart > table td.prod_price,
+        div.viewcart > table td.quantity,
+        div.viewcart > table td.amount,
+        div.viewcart > table td.total_amount {
+            text-align: right;
+        }
+        div.viewcart > table td.total_amount {
+            font-weight: bold;
+            color: red;
+            border-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewcart">
+        <h1>장바구니</h1>
+        <table>
+            <tr>
+                <th>상품번호</th>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>금액</th>
+            </tr>
+            <tr>
+                <td>C0001</td>
+                <td>아메리카노</td>
+                <td class="prod_price">3,500</td>
+                <td class="quantity">3</td>
+                <td class="amount">9,000</td>
+            </tr>
+            <tr>
+                <td>C0002</td>
+                <td>바닐라라떼</td>
+                <td class="prod_price">4,500</td>
+                <td class="quantity">1</td>
+                <td class="amount">4,500</td>
+            </tr>
+            <tr>
+                <td colspan="5" class="total_amount">총 금액: 13,500</td>
+            </tr>
+        </table>
+        <form action="">
+            <input type="submit" value="주문하기">
+        </form>
+        
+    </div>
+    
+</body>
+</html>

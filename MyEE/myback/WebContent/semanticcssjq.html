@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>시맨틱 태그-CSS</title>
+    <style>
+        /*
+            <img src="https://image.istarbucks.co.kr/upload/banner/floatingbnr/Mn0ecH_20220711153123340.png" alt="B2B 기업 구매 페이지" class="pc-badge"> 
+         */
+         * {
+            box-sizing: border-box;
+            color: #000000;
+         }
+        header {
+            background: #f6f5ef; 
+            margin: 5px auto;
+            position: relative;
+            /* background-image: url('./images/logo.jpg'); */
+        }
+        footer {
+            background-color: #2c2a29; color: #fff;
+        }
+        header, footer {
+            height: 100px; width: 1100px;
+        }
+        header > nav > ul {
+            list-style-type: none;
+            padding: 0px;
+        }
+        header > nav > ul > li {
+            width: 100px;
+            display: inline-block;
+            margin: 0px 10px;
+            text-align: center;
+        }
+        header > nav > ul > li > a {
+            text-decoration: none;
+        }
+        header > nav > ul > li > a:hover {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+        }
+        header > h1 {
+            width: 30%;
+            margin: 0 auto;
+            height: 100%;
+            display: inline-block;
+            position: relative;
+            border: 1px solid
+        }
+        header > h1 > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+            position: absolute;
+            top: 10px;
+            left: 0px;
+
+            background-image: url('./images/logo.jpg');
+            background-repeat: no-repeat;
+        }
+
+
+        header > nav {
+            display: inline-block;
+            width: 60%;
+            height: 100%;
+            border: 1px solid;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+        section { 
+            background-color: #eef2f3; 
+            width: 1100px;    
+            height: 500px; 
+            margin-bottom: 5px;
+            position: relative;
+        }
+        section > article {
+            width: 60%;
+            height: 100%;
+            float: left;
+        }
+        /* section > div > article.one {
+            background-color: #b3ffd9;
+            width: 100%;
+            height: 40%;
+        
+        } */
+        /* section > div > article.two {
+            background-color: #1e3932; 
+            color: white;
+            width: 100%;
+            height: 40%;
+        } */
+        section > div > aside {
+            width: 30%;
+            height: 100%;
+            float: right;
+        }
+        header > nav.small {
+            display: none;
+        }
+        @media screen and (min-width: 641px) and (max-width: 960px) {
+            header > nav.small {
+                display: inline-block;
+            }
+            header > nav.large {
+                display: none;
+            }
+        }
+        footer {background-color: #2c2a29; color: #fff;}
+        header, footer {height: 100px;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // Dom트리에서 메뉴 객체들 ( 로그인, 회원가입, 상품목록, 장바구니)
+            let $menuObj = $("header>nav>ul>li>a"); 
+            $menuObj.click(function(event) {
+                $("section > article").empty(); 
+                let hrefValue = $(this).attr("href");  // $(event.target).attr("href"); 와 같음
+                console.log(hrefValue)
+                // Ajax
+                $.ajax({
+                	url: hrefValue,
+                	method: "get",
+                	success: function(data) {
+                		//console.log(data)
+                		$("section>article").html(data);
+                	},
+                	error: function(jqXHR) {
+                		alert("AJAX요청응답 실패: 에러코드= " + jqXHR.status);
+                	}
+                })              
+                return false; // a태그의 기본이벤트 막기 event.preventdefault()와 event.stopPropagation() 포함
+            })
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>STARBUCKS</h1>
+        <nav class="large">
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+                <li><a href="signup.html">회원가입</a></li>
+                <li><a href="productlist.html">상품목록</a></li>
+                <li><a href="viewcart.html">장바구니</a></li>
+            </ul>
+        </nav>
+        <nav class="small">
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+                <li><a href="signup.html">회원가입</a></li>  
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article>
+            <h1>Sangwoo</h1>
+        </article>
+        <aside>
+
+        </aside>
+    </section>
+    <footer>
+        사업자등록번호 : 201-81-21515 주식회사 에스씨케이컴퍼니 대표이사 : 손정현 TEL : 1522-3232 개인정보 책임자 : 이찬우
+        ⓒ 2023 Starbucks Coffee Company. All Rights Reserved.
+    </footer>
+</body>
+</html>

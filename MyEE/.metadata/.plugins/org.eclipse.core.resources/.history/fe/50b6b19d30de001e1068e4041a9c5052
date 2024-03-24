@@ -1,0 +1,10 @@
+package jdbc;
+
+public class JDBCTest {
+
+	public static void main(String[] args) {
+		// JDBC 드라이버 로드
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.my.service;
+
+import com.my.dao.CustomerDAO;
+import com.my.dao.CustomerDAOOracle;
+
+public class CustomerService {
+	
+	private CustomerDAO dao = new CustomerDAOOracle();
+}

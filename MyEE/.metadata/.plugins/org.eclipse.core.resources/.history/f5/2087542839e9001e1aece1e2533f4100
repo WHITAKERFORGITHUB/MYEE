@@ -1,0 +1,47 @@
+package com.my.vo;
+
+import java.util.Date;
+
+public class OrderInfo {
+	private int order_no;
+	private String order_id;
+	private Date order_dt;
+	
+	public OrderInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public OrderInfo(String order_id) {
+		this.order_id = order_id;
+	}
+	public OrderInfo(int order_no, String order_id, Date order_dt) {
+		super();
+		this.order_no = order_no;
+		this.order_id = order_id;
+		this.order_dt = order_dt;
+	}
+	@Override
+	public String toString() {
+		return "OrderInfo [order_no=" + order_no + ", order_id=" + order_id + ", order_dt=" + order_dt + "]";
+	}
+	public int getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(int order_no) {
+		this.order_no = order_no;
+	}
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+	public Date getOrder_dt() {
+		return order_dt;
+	}
+	public void setOrder_dt(Date order_dt) {
+		this.order_dt = order_dt;
+	}
+	
+
+}

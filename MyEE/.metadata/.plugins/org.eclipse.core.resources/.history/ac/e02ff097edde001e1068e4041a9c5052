@@ -1,0 +1,11 @@
+package com.my.vo;
+
+public class Customer {
+	
+	private String id;
+	private String pwd;
+	private	String name;
+	private String zipcode;
+	private String addr;
+
+}

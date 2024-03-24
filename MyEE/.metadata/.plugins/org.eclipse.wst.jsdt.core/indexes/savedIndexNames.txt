@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\KOSTA_JAVA_WEBAPP\MyEE\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1966857388.index
+3017939295.index
+722524806.index
+733897487.index
+1801797884.index
+333738891.index
+2221966563.index
